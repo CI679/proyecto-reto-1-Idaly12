@@ -1,66 +1,45 @@
 # Project Title
-
-Proyecto del primer parcial
+* Proyecto del primer parcial
 
 ## Getting Started
 
-El objetivo de este proyecto es desarrollar una aplicación en Bash que ayude a que otras personas adquieran conocimientos sobre las diferentes metodologías de desarrollo de software. Además, permite que quienes ya tienen experiencia en el tema puedan brindar más información para todos los usuarios, tanto de metodologías ágiles como tradicionales.
+* El objetivo de este proyecto es desarrollar una aplicación en Bash que ayude a que otras personas adquieran conocimientos sobre las diferentes metodologías de desarrollo de software. Además, permite que quienes ya tienen experiencia en el tema puedan brindar más información para todos los usuarios, tanto de metodologías ágiles como tradicionales.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+* Como requisitos para el proyecto necesitamos tener docker instalado
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+* Se va a entrar a docker hub en el repositorio 7lucas24/meto-desa-uach:latest
+* Una vez descargado se le va a dar docker image run -it  7lucas24/meto-desa-uach:latest -a|-t 
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+* Actualmente, las pruebas del proyecto se basan en la ejecución de los scripts para verificar que las rutas y opciones funcionen correctamente.
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+* Estas pruebas aseguran que la navegación en el menú de la aplicación funcione correctamente y que se despliegue la información adecuada para cada metodología.
+* -Ejemplo: Prueba para validar la ejecución del menú ágil
+* //docker run -it 7lucas24/meto-desa-uach:latest -a
+* -Se espera que despliegue información sobre Scrum, XP, etc.
 
 ### And coding style tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+* Estas pruebas verifican que el código Bash mantenga una sintaxis limpia, comentarios claros y buenas prácticas de scripting.
+* -Uso de ShellCheck para revisar estilo y errores comunes
+* shellcheck main.sh
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-
+Para desplegar este proyecto en un entorno real, se recomienda contar con Docker instalado en el servidor objetivo y ejecutar el contenedor directamente desde Docker Hub. También se puede integrar con sistemas de documentación o servidores de aprendizaje mediante contenedores personalizados.
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* Bash - Lenguaje principal del script
+
+* Docker - Contenedor para distribuir la aplicación
 
 ## Contributing
 
@@ -71,10 +50,10 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
-Luis Arturo Hernández Castillo
-Eduardo Tristan Chavez
-Idaly Guadalupe Morales Robredo
-Adrian Caleb Jaramillo Flores
+* Luis Arturo Hernández Castillo 
+* Eduardo Tristan Chavez 
+* Idaly Guadalupe Morales Robredo
+* Adrian Caleb Jaramillo Flores 
 
 ## License
 
@@ -82,6 +61,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* A los profesores de la UACH por guiar el aprendizaje del desarrollo de software
+* A Docker por permitir empaquetar fácilmente la aplicación
+* A quienes contribuyeron con documentación y ejemplos de metodologías
