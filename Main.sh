@@ -70,4 +70,4 @@ menu_agiles() {
 
 
 
-bash Proyecto_Primer_Parcial1.sh -a  # Para metodologías ágiles usar -a
+bash Main.sh -a  # Para metodologías ágiles usar -a
