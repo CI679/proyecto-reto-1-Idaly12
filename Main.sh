@@ -28,8 +28,16 @@ mostrar_submenu() {
                 echo "[$concepto] .- $definicion" >> "$archivo"
                 echo "Información agregada correctamente."
                 ;;
-            
-            5)
+            4)
+                echo "Mostrar contenido base de información:"
+                if [ -s "$archivo" ]; then
+                    cat "$archivo"
+                else
+                    echo "(Archivo vacío)"
+                fi
+                ;;
+            5)  
+                echo "Volviendo al menu....."
                 break
                 ;;
             6)
@@ -68,6 +76,57 @@ menu_agiles() {
     mostrar_submenu "$archivo"
 }
 
+# Función para mostrar menú de metodologías tradicionales
+menu_tradicionales () {
+    echo "Bienvenido a la guía rápida de metodologías tradicionales, para continuar seleccione un tema:"
+    echo "1. Cascada"
+    echo "2. Modelo en V"
+    echo "3. Espiral"
+    read -rp "Opción: " opcion
 
+    case $opcion in
+        1) metodologia="Cascada" ;;
+        2) metodologia="Modelo en V" ;;
+        3) metodologia="Espiral" "meto/espiral.inf" ;;
+        *) echo "Opción no válida." ; exit 1 ;;
+    esac
 
-bash Main.sh -a  # Para metodologías ágiles usar -a
+    archivo="${metodologia}.inf"
+    if [[ ! -f "$archivo" ]]; then
+        touch "$archivo"
+        echo "Archivo $archivo creado."
+    fi
+    mostrar_submenu "$archivo"
+}
+
+main() {
+    arg="$1"
+
+    if [ -z "$arg" ]; then
+        echo "Uso: $0 <-a|-t>"
+        exit 1
+    fi
+
+    if [ "$arg" == "-a" ]; then
+        menu_agiles
+
+    elif [ "$arg" == "-t" ]; then
+        menu_tradicionales
+    
+    else
+        echo "Parámetro no válido. Usa: -a o -t"
+        exit 1
+    fi
+}
+
+# Programa principal: bucle para permitir volver al menú principal si se desea
+while true; do
+    main "$1"
+    echo
+    echo "¿Deseas realizar otra operación? (s/n)"
+    read -p "Respuesta: " respuesta
+    if [ "$respuesta" != "s" ]; then
+        echo "Gracias por usar la aplicación. ¡Hasta luego!"
+        break
+    fi
+done
