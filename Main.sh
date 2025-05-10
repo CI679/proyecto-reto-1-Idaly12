@@ -28,6 +28,26 @@ mostrar_submenu() {
                 echo "[$concepto] .- $definicion" >> "$archivo"
                 echo "Información agregada correctamente."
                 ;;
+            2)
+                read -rp "Ingrese el concepto a buscar: " concepto
+                if grep -q "\[$concepto\]" "$archivo"; then
+                    echo "Concepto encontrado:"
+                    echo "=================================="
+                    grep "\[$concepto\]" "$archivo"
+                    echo "=================================="
+                else
+                    echo "El concepto [$concepto] no se encuentra en el archivo."
+                fi
+                ;;
+            3)
+                read -rp "Ingrese el concepto a eliminar: " concepto
+                if grep -q "\[$concepto\]" "$archivo"; then
+                    sed -i "/\[$concepto\]/d" "$archivo"
+                    echo "El concepto [$concepto] ha sido eliminado."
+                else
+                    echo "El concepto [$concepto] no se encuentra en el archivo."
+                fi
+                ;;
             4)
                 echo "Mostrar contenido base de información:"
                 if [ -s "$archivo" ]; then
@@ -58,6 +78,7 @@ menu_agiles() {
     echo "2. XP (Programación Extrema)"
     echo "3. Kanban"
     echo "4. Crystal"
+    echo "5. Cambiar a Metodología tradicional"
     read -rp "Opción: " opcion
 
     case $opcion in
@@ -65,10 +86,11 @@ menu_agiles() {
         2) metodologia="XP" ;;
         3) metodologia="Kanban" ;;
         4) metodologia="Crystal" ;;
+        5) main "-t";;
         *) echo "Opción inválida." ; exit 1 ;;
     esac
 
-    archivo="${metodologia}.inf"
+    archivo="meto/${metodologia,,}.inf"
     if [[ ! -f "$archivo" ]]; then
         touch "$archivo"
         echo "Archivo $archivo creado."
@@ -82,16 +104,18 @@ menu_tradicionales () {
     echo "1. Cascada"
     echo "2. Modelo en V"
     echo "3. Espiral"
+    echo "4. Cambiar a Metodología Agile"
     read -rp "Opción: " opcion
 
     case $opcion in
         1) metodologia="Cascada" ;;
         2) metodologia="Modelo en V" ;;
-        3) metodologia="Espiral" "meto/espiral.inf" ;;
+        3) metodologia="Espiral";;
+        4) main "-a";;
         *) echo "Opción no válida." ; exit 1 ;;
     esac
 
-    archivo="${metodologia}.inf"
+    archivo="meto/${metodologia,,}.inf"
     if [[ ! -f "$archivo" ]]; then
         touch "$archivo"
         echo "Archivo $archivo creado."
