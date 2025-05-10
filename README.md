@@ -1,5 +1,5 @@
 # Project Title
-* Proyecto del primer parcial
+Proyecto del primer parcial
 
 ## Getting Started
 
@@ -7,12 +7,12 @@
 
 ### Prerequisites
 
-* Como requisitos para el proyecto necesitamos tener docker instalado
+* Como requisitos para el proyecto necesitamos tener docker y git instalados
 
 ### Installing
 
-* Se va a entrar a docker hub en el repositorio 7lucas24/meto-desa-uach:latest
-* Una vez descargado se le va a dar docker image run -it  7lucas24/meto-desa-uach:latest -a|-t 
+* Se va a descargar la imagen de 7lucas24/meto-desa-uach:latest
+* Una vez descargada se le va a dar docker image run -it  7lucas24/meto-desa-uach:latest -a|-t 
 
 
 ## Running the tests
@@ -22,14 +22,17 @@
 ### Break down into end to end tests
 
 * Estas pruebas aseguran que la navegación en el menú de la aplicación funcione correctamente y que se despliegue la información adecuada para cada metodología.
-* -Ejemplo: Prueba para validar la ejecución del menú ágil
-* //docker run -it 7lucas24/meto-desa-uach:latest -a
-* -Se espera que despliegue información sobre Scrum, XP, etc.
+* Si no tenemos la imagen de docker descargada primero debemos hacer lo siguiente en la terminal:
+* docker login
+* docker pull 7lucas24/meto-desa-uach:latest
+* Ejemplo: Prueba para validar la ejecución del menú ágil
+* docker run -it 7lucas24/meto-desa-uach:latest -a
+* Se espera que despliegue información sobre Scrum, XP, etc.
 
 ### And coding style tests
 
 * Estas pruebas verifican que el código Bash mantenga una sintaxis limpia, comentarios claros y buenas prácticas de scripting.
-* -Uso de ShellCheck para revisar estilo y errores comunes
+* Uso de ShellCheck para revisar estilo y errores comunes
 * shellcheck main.sh
 
 ## Deployment
